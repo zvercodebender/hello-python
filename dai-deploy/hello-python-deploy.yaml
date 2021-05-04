@@ -1,0 +1,27 @@
+---
+apiVersion: xl-deploy/v1
+kind: Applications
+spec:
+- name: Applications/HelloPy
+  type: udm.Application
+  children:
+  - name: 4b07c41
+    type: udm.DeploymentPackage
+    deployables:
+    - name: hello-py-deploy.yaml
+      type: k8s.ResourcesFile
+      placeholders:
+      - image_tag 
+      - ingress_host
+      fileEncodings:
+        ".+\\.properties": ISO-8859-1
+      mergePatchType: strategic
+      propagationPolicy: Foreground
+      updateMethod: apply
+      createOrder: "60"
+      modifyOrder: "50"
+      destroyOrder: "40"
+      displayResourceOnLogs: "false"
+      showContainerLogs: "false"
+      bytesToReadFromContainerLogs: "4000"
+      file: !file "../kube/deployment.yml"
