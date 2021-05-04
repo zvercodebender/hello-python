@@ -5,7 +5,7 @@ spec:
 - name: Applications/HelloPy
   type: udm.Application
   children:
-  - name: 4b07c41
+  - name: 99b6acf
     type: udm.DeploymentPackage
     deployables:
     - name: hello-py-deploy.yaml
@@ -24,4 +24,4 @@ spec:
       displayResourceOnLogs: "false"
       showContainerLogs: "false"
       bytesToReadFromContainerLogs: "4000"
-      file: !file "../kube/deployment.yml"
+      file: !file "../kubernetes/deployment.yaml"
