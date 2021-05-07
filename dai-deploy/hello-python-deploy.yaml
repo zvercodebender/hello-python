@@ -5,7 +5,7 @@ spec:
 - name: Applications/HelloPy
   type: udm.Application
   children:
-  - name: 99b6acf
+  - name: d120bb2
     type: udm.DeploymentPackage
     deployables:
     - name: hello-py-deploy.yaml

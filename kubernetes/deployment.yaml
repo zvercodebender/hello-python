@@ -33,7 +33,7 @@ spec:
         app: hello-py
     spec:
       containers:
-      - image: danberg/hello-py:{{image_tag}}
+      - image: {{image_name}}:{{image_tag}}
         name: hello-py
         ports:
           - containerPort: 5000
