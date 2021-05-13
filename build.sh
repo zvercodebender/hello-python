@@ -2,6 +2,7 @@
 
 export CLI_VERSION="10.0.0"
 export REPO="rbroker/hello-py"
+TAG="$(git rev-parse --short HEAD)"
 #export VERSION="3.1.1"
 if [ -z "${TAG}" ]
 then

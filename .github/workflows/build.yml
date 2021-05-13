@@ -1,8 +1,8 @@
 name: Demo-Hello-Python
 on:
   push:
-    tags:
-      - '*'
+    branches:
+      - main
 jobs:
   demo-hello-python-version:
     runs-on: ubuntu-latest
