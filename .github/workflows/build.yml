@@ -1,0 +1,20 @@
+name: Demo-Hello-Python
+on:
+  push:
+    tags:
+      - '*'
+jobs:
+  demo-hello-python-version:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "PetPortalHosts is at version ${{ steps.tagkit.outputs.tag }}"
+      - uses: actions/checkout@v2
+      - name: build
+        env:
+          TAG: ${GITHUB_SHA::8}
+          REPO: rbroker/hello-py
+          XLD_USER: ${{ secrets.XLD_USER }}
+          XLD_PASSWD: ${{ secrets.XLD_PASSWD }}
+          XLD_URL: "http://xld.rbroker.linkpc.net"
+          GET_LOCAL: "N"
+        run: ./build.sh

@@ -2,16 +2,16 @@
 apiVersion: xl-deploy/v1
 kind: Applications
 spec:
-- name: Applications/HelloPy
+- name: Applications/Paycom/HelloPy
   type: udm.Application
   children:
-  - name: d120bb2
+  - name: !format Applications/Paycom/HelloPy/%version%
     type: udm.DeploymentPackage
     deployables:
     - name: hello-py-deploy.yaml
       type: k8s.ResourcesFile
       placeholders:
-      - image_tag 
+      - image_tag
       - ingress_host
       fileEncodings:
         ".+\\.properties": ISO-8859-1
@@ -24,4 +24,4 @@ spec:
       displayResourceOnLogs: "false"
       showContainerLogs: "false"
       bytesToReadFromContainerLogs: "4000"
-      file: !file "../kubernetes/deployment.yaml"
+      file: !file "../kubernetes/hello-python.yaml"

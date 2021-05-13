@@ -10,6 +10,7 @@ spec:
     port: 6000
     targetPort: 5000
   type: ClusterIP
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -33,23 +34,24 @@ spec:
         app: hello-py
     spec:
       containers:
-      - image: "{{image_name}}:{{image_tag}}"
+      - image: "rbroker/hello-py:{{image_tag}}"
         name: hello-py
         ports:
           - containerPort: 5000
+
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: hello-py-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  labels:
+    app: hello-py
 spec:
   rules:
-  - host: "{{ingress_host}}"
+  - host: {{ingress_host}}
     http:
       paths:
-      - path: /hellopy(/|$)(.*)
+      - path: /
         pathType: Prefix
         backend:
           service:
