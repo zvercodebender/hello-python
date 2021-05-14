@@ -12,7 +12,8 @@ jobs:
       - name: build
         env:
          DOCKER_USER: ${{ secrets.DOCKER_USER }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}          TAG: ${GITHUB_SHA::8}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          TAG: ${GITHUB_SHA::8}
           REPO: rbroker/hello-py
           XLD_USER: ${{ secrets.XLD_USER }}
           XLD_PASSWD: ${{ secrets.XLD_PASSWD }}
