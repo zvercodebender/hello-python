@@ -7,7 +7,7 @@ jobs:
   demo-hello-python-version:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "PetPortalHosts is at version ${{ steps.tagkit.outputs.tag }}"
+      - run: echo "Hello Python is at version ${{ steps.tagkit.outputs.tag }}"
       - uses: actions/checkout@v2
       - name: build
         env:
