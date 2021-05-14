@@ -12,9 +12,8 @@ fi
 echo "Version = ${TAG}"
 IMAGE="${REPO}:${TAG}"
 
-echo "docker build ${IMAGE} -f Dockerfile ."
 docker build ${IMAGE} -f Dockerfile .
-echo "docker push ${IMAGE}"
+docker login --username $DOCKER_USER --password $DOCKER_PASSWORD docker.io
 docker push ${IMAGE}
 sed "s/{{image_tag}}/${TAG}/g" kubernetes/deployment.yaml > kubernetes/hello-python.yaml
 
