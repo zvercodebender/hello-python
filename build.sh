@@ -26,7 +26,7 @@ else
   curl -LO https://dist.xebialabs.com/public/xl-cli/$CLI_VERSION/linux-amd64/xl
   chmod +x xl
   ./xl apply --xl-deploy-url=$XLD_URL --xl-deploy-username=$XLD_USER --xl-deploy-password=$XLD_PASSWD --file dai-deploy/hello-python-deploy.yaml --values version=$TAG
-  ./xl apply --xl-deploy-url=$XLR_URL --xl-deploy-username=$XLD_USER --xl-deploy-password=$XLD_PASSWD --file dai-deploy/start-release.yaml --values version=$TAG
+  ./xl apply --xl-release-url=$XLR_URL --xl-release-username=$XLD_USER --xl-release-password=$XLD_PASSWD -d --file dai-deploy/start-release.yaml --values version=$TAG
   rm xl
 fi
 #rm x.yaml
