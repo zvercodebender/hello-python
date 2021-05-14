@@ -14,6 +14,7 @@ IMAGE="${REPO}:${TAG}"
 
 docker build ${IMAGE} -f Dockerfile .
 docker login --username $DOCKER_USER --password $DOCKER_PASSWORD docker.io
+echo "docker push ${IMAGE}"
 docker push ${IMAGE}
 sed "s/{{image_tag}}/${TAG}/g" kubernetes/deployment.yaml > kubernetes/hello-python.yaml
 
