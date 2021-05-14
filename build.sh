@@ -12,7 +12,8 @@ fi
 echo "Version = ${TAG}"
 IMAGE="${REPO}:${TAG}"
 
-docker build ${IMAGE} -f Dockerfile .
+echo "docker build -t ${IMAGE} -f Dockerfile ."
+docker build -t ${IMAGE} -f Dockerfile .
 docker login --username $DOCKER_USER --password $DOCKER_PASSWORD docker.io
 echo "docker push ${IMAGE}"
 docker push ${IMAGE}
