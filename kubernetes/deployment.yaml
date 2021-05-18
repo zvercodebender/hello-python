@@ -46,6 +46,8 @@ metadata:
   name: hello-py-ingress
   labels:
     app: hello-py
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: hellopy-ip
 spec:
   rules:
   - host: {{ingress_host}}
