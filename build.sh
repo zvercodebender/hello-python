@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 export REPO="rbroker/hello-py"
-#TAG="$(date +%y.%m.%d-%H%M%S)"
+TAG="$(date +%y.%m.%d-%H%M%S)"
 if [ -z "${TAG}" ]
 then
   echo "VERSION not set"
@@ -25,4 +25,3 @@ curl -k -X POST "${CB_FLOW}/rest/v1.0/releases?projectName=MyProject&releaseName
      -H "accept: application/json" \
      -d "{}"
 
-# Done
