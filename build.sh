@@ -24,3 +24,5 @@ curl -k -X POST "${CB_FLOW}/rest/v1.0/releases?projectName=MyProject&releaseName
      -u ${CB_USER}:${CB_PASSWD} \
      -H "accept: application/json" \
      -d "{}"
+
+# Done
