@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - cloudbees
 jobs:
   demo-hello-python-version:
     runs-on: ubuntu-latest
