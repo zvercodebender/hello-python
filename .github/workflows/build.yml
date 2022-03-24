@@ -17,6 +17,8 @@ jobs:
           REPO: rbroker/hello-py
           XLD_USER: ${{ secrets.XLD_USER }}
           XLD_PASSWD: ${{ secrets.XLD_PASSWD }}
-          CB_FLOW: "https://flow-web.rbroker.linkpc.net"
+          CB_FLOW: "${{ secrets.CB_FLOW }}"
+          CB_USER: "${{ secrets.CB_USER }}"
+          CB_PASSWD: "${{ secrets.CB_PASSWD }}"
           GET_LOCAL: "N"
         run: ./build.sh
