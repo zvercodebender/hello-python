@@ -24,8 +24,8 @@ docker push ${IMAGE}
 #      -u ${CB_USER}:${CB_PASSWD} \
 #      -H "accept: application/json" \
 #      -d "{}"
-
-curl -k -X POST “${CB_FLOW}/rest/v1.0/pipelines?pipelineName=hello-python&projectName=MyProject” \
+curl -k -X POST "${CB_FLOW}/rest/v1.0/pipelines?pipelineName=hello-python&projectName=MyProject" \
      -u ${CB_USER}:${CB_PASSWD} \
-     -H “accept: application/json” \
-     -d “{\“actualParameter\“:[{\“actualParameterName\“:\“appVersion\“,\“value\“:\“${TAG}\“}]}”
+     -H "accept: application/json" \
+     -d "{\"actualParameter\":[{\"actualParameterName\":\"appVersion\",\"value\":\"${TAG}\"}]}"
+
