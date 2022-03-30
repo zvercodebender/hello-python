@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return "Hello Digital.ai!<br><h1>#GoTeam! Cloudbees</h1>"
+    return "Hello Cloudbees!<br><h1>#GoTeam! </h1>"
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
