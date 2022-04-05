@@ -1,0 +1,7 @@
+build
+.gradle
+.idea
+classes/
+.DS_Store
+*.iml
+env.sh
