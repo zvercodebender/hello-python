@@ -16,10 +16,10 @@ docker login --username $DOCKER_USER --password $DOCKER_PASSWORD docker.io
 echo "docker push ${IMAGE}"
 docker push ${IMAGE}
  
-curl -k -X POST "${CB_FLOW}/rest/v1.0/projects/MyProject/catalogs/Hello-Python/catalogItems/Hello%20Python?request=runCatalogItem" \
+curl -X POST "${CB_FLOW}/rest/v1.0/projects/MyProject/releases?releaseName=Hello-Python%20${TAG}&pipelineName=hello-python&pipelineProjectName=MyProject" \
      -u ${CB_USER}:${CB_PASSWD} \
      -H "accept: application/json" \
-     -d "{\"actualParameter\":[{\"actualParameterName\":\"releaseName\",\"value\":\"Hello Python - ${TAG}\"}]}"
+     -d "{\"actualParameter\":[{\"actualParameterName\":\"appVersion\",\"value\":\"${TAG}\"}]}"
 
 curl -k -X POST "${CB_FLOW}/rest/v1.0/releases?projectName=MyProject&releaseName=Hello%20Python%20-%20${TAG}" \
      -u ${CB_USER}:${CB_PASSWD} \
