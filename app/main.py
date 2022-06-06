@@ -7,6 +7,7 @@ from rox.core.entities.rox_int import RoxInt
 from rox.core.entities.rox_double import RoxDouble
 
 from flask import Flask
+import GetConfig
 
 ################################################################################################
 # Create Roxflags in the Flags container class
@@ -19,9 +20,12 @@ class Flags:
         self.percentage = RoxDouble(99.9, [10.5, 50.0, 99.9])
 
 flags = Flags()
+config = GetConfig.GetConfig( "/app/config/app.properties" )
+
 
 # Register the flags container
-Rox.register('zvercodebender-hello-python', flags)
+#Rox.register('zvercodebender-hello-python', flags)
+Rox.register( config.getProperty( "application", "flags" ) , flags)
 
 # Setup the environment key & configuration_fetched_handler in the options object
 options = RoxOptions(
@@ -29,7 +33,8 @@ options = RoxOptions(
         print("applied-from=%s creation-date=%s has-changes=%s error=%s" % (o.fetcher_status , o.creation_date , o.has_changes , o.error_details)  )
 )
 
-cancel_event = Rox.setup("62052a2c1642474b171709dc", options).result();
+#cancel_event = Rox.setup("62052a2c1642474b171709dc", options).result();
+cancel_event = Rox.setup( config.getProperty( "token", "flags" ) , options).result();
 
 # Boolean flag example
 print('enableTutorial is {}'.format(flags.enableTutorial.is_enabled()))
