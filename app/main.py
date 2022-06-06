@@ -7,6 +7,10 @@ from rox.core.entities.rox_int import RoxInt
 from rox.core.entities.rox_double import RoxDouble
 
 from flask import Flask
+
+import sys, os
+scriptPath = os.path.realpath(os.path.dirname(sys.argv[0]))
+os.chdir(scriptPath)
 import GetConfig
 
 ################################################################################################
