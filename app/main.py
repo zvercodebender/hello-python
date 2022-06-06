@@ -6,6 +6,7 @@ from rox.core.entities.rox_string import RoxString
 from rox.core.entities.rox_int import RoxInt
 from rox.core.entities.rox_double import RoxDouble
 
+import logging
 from flask import Flask
 
 import sys, os
@@ -30,6 +31,7 @@ config = GetConfig.GetConfig( "/app/config/app.properties" )
 # Register the flags container
 #Rox.register('zvercodebender-hello-python', flags)
 Rox.register( config.getProperty( "application", "flags" ) , flags)
+print("App Name: %s" % config.getProperty( "application", "flags" ) )
 
 # Setup the environment key & configuration_fetched_handler in the options object
 options = RoxOptions(
@@ -39,6 +41,7 @@ options = RoxOptions(
 
 #cancel_event = Rox.setup("62052a2c1642474b171709dc", options).result();
 cancel_event = Rox.setup( config.getProperty( "token", "flags" ) , options).result();
+print("Token: %s" % config.getProperty( "token", "flags" ) )
 
 # Boolean flag example
 print('enableTutorial is {}'.format(flags.enableTutorial.is_enabled()))
@@ -59,10 +62,12 @@ print('percentage is {}'.format(flags.percentage.get_value()))
 #
 app = Flask(__name__)
 
+logger = logging.getLogger('werkzeug')
+
 @app.route("/")
 def hello():
     Rox.fetch()
-    print('color is {}'.format(flags.titleColors.get_value()))
+    logger.info('color is {}'.format(flags.titleColors.get_value()))
     return "<html><body>Hello Cloudbees! <br><h1 style=\"color:" + flags.titleColors.get_value() + ";\">#GoTeam!</h1></body></html>"
 
 if __name__ == "__main__":
