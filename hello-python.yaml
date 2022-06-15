@@ -19,7 +19,7 @@ metadata:
     app: hello-py
   name: hello-py
 spec:
-  replicas: 5
+  replicas: $[/myEnvironment/scale]
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -38,6 +38,10 @@ spec:
         name: hello-py
         ports:
           - containerPort: 5000
+        volumeMounts:
+        - mountPath: /app/config
+          name: config
+          readOnly: true       
       volumes:
       - configMap:
           defaultMode: 420
@@ -65,4 +69,3 @@ spec:
               number: 6000
         path: /
         pathType: ImplementationSpecific
-
