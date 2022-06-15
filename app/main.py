@@ -29,7 +29,6 @@ config = GetConfig.GetConfig( "/app/config/app.properties" )
 
 
 # Register the flags container
-#Rox.register('zvercodebender-hello-python', flags)
 Rox.register( config.getProperty( "application", "flags" ) , flags)
 print("App Name: %s" % config.getProperty( "application", "flags" ) )
 
@@ -39,7 +38,6 @@ options = RoxOptions(
         print("applied-from=%s creation-date=%s has-changes=%s error=%s" % (o.fetcher_status , o.creation_date , o.has_changes , o.error_details)  )
 )
 
-#cancel_event = Rox.setup("62052a2c1642474b171709dc", options).result();
 cancel_event = Rox.setup( config.getProperty( "token", "flags" ) , options).result();
 print("Token: %s" % config.getProperty( "token", "flags" ) )
 
