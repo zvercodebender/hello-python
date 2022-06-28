@@ -66,7 +66,7 @@ logger = logging.getLogger('werkzeug')
 def hello():
     Rox.fetch()
     logger.info('color is {}'.format(flags.titleColors.get_value()))
-    return "<html><body>Hello Cloudbees! <br><h1 style=\"color:" + flags.titleColors.get_value() + ";\">#GoTeam!</h1></body></html>"
+    return "<html><body>привет Клодбиз! <br><h1 style=\"color:" + flags.titleColors.get_value() + ";\">#GoTeam!</h1></body></html>"
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
