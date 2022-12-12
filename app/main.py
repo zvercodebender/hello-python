@@ -1,4 +1,5 @@
 # Import SDK
+from urllib import request
 from rox.server.rox_server import Rox
 from rox.server.rox_options import RoxOptions
 from rox.server.flags.rox_flag import RoxFlag
@@ -23,6 +24,7 @@ class Flags:
         self.titleColors = RoxString('black', ['black', 'blue', 'green', 'yellow'])
         self.page = RoxInt(1, [1, 2, 3])
         self.percentage = RoxDouble(99.9, [10.5, 50.0, 99.9])
+        #Rox.set_custom_string_property('email', email);
 
 flags = Flags()
 config = GetConfig.GetConfig( "/app/config/app.properties" )
