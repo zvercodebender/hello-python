@@ -19,7 +19,7 @@ metadata:
     app: hello-py
   name: hello-py
 spec:
-  replicas: $[/myEnvironment/scale]
+  replicas: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -34,7 +34,7 @@ spec:
         app: hello-py
     spec:
       containers:
-      - image: "rbroker/hello-py:$[appVersion]"
+      - image: "rbroker/hello-py"
         name: hello-py
         ports:
           - containerPort: 5000
@@ -59,7 +59,7 @@ metadata:
 
 spec:
   rules:
-  - host: $[/myEnvironment/INGRESS_HOST]
+  - host: hello-argo.192.168.17.11.nip.io
     http:
       paths:
       - backend:
