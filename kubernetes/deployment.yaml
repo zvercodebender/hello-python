@@ -34,7 +34,7 @@ spec:
         app: hello-py
     spec:
       containers:
-      - image: "rbroker/hello-py:{{image_tag}}"
+      - image: "rbroker/hello-py"
         name: hello-py
         ports:
           - containerPort: 5000
@@ -51,7 +51,7 @@ metadata:
 
 spec:
   rules:
-  - host: {{ingress_host}}
+  - host: hello.argo.192.168.16.11.nip.io
     http:
       paths:
       - path: /
