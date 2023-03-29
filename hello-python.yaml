@@ -34,7 +34,7 @@ spec:
         app: hello-py
     spec:
       containers:
-      - image: "rbroker/hello-py:22.12.22-151853"
+      - image: "rbroker/hello-py:22.12.22-150139"
         name: hello-py
         ports:
           - containerPort: 5000
