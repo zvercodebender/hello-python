@@ -19,7 +19,7 @@ metadata:
     app: hello-py
   name: hello-py
 spec:
-  replicas: 2
+  replicas: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
