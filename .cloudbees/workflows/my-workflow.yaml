@@ -15,5 +15,7 @@ jobs:
           echo "hello world"
       - uses: ssh-to-rancher
         name: ssh to rancher
+        kind: deploy
         with:
           script: uname -a
+          command_timeout: 5m
