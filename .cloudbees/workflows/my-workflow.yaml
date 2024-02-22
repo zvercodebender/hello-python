@@ -13,11 +13,16 @@ jobs:
         shell: sh
         run: |
           echo "hello world"
-      - name: SSH with username and password
-        uses: cloudbees-io/ssh-deploy-actions@v1
+      - uses: cloudbees-io/ssh-deploy-actions@v1
+        name: SSH with username and password
         with:
           host: rbroker.linkpc.net
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: "2022"
+          script: uname -a,whoami,pwd
+      - uses: ssh-to-rancher
+        name: ssh with action
+        with:
+          host: rbroker.linkpc.net
           script: uname -a,whoami,pwd
