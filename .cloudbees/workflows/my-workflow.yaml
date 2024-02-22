@@ -19,5 +19,5 @@ jobs:
           host: rbroker.linkpc.net
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
-          port: "22"
-          script: whoami,pwd
+          port: "2022"
+          script: uname -a,whoami,pwd
