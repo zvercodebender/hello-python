@@ -13,10 +13,11 @@ jobs:
         shell: sh
         run: |
           echo "hello world"
-      - uses: ssh-to-rancher
-        name: ssh to rancher
-        kind: deploy
+      - name: SSH with username and password
+        uses: cloudbees-io/ssh-deploy-actions@v1
         with:
           host: rbroker.linkpc.net
-          script: uname -a
-          command_timeout: 5m
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: "22"
+          script: whoami,pwd
