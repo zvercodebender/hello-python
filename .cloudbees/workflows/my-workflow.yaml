@@ -17,5 +17,6 @@ jobs:
         name: ssh to rancher
         kind: deploy
         with:
+          host: rbroker.linkpc.net
           script: uname -a
           command_timeout: 5m
