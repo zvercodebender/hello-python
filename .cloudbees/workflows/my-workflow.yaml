@@ -15,6 +15,7 @@ jobs:
           echo "hello world"
       - uses: cloudbees-io/ssh-deploy-actions@v1
         name: SSH with username and password
+        kind: deploy
         with:
           host: rbroker.linkpc.net
           username: ${{ secrets.SSH_USER }}
