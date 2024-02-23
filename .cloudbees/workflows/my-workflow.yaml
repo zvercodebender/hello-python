@@ -22,8 +22,8 @@ jobs:
           port: "2022"
           script: |
             uname -a
+            echo $HOME
             export HOME=/home/testusr
             cd $HOME
-            echo $HOME
             pwd
             kubectl get namespaces
