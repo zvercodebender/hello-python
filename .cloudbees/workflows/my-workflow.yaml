@@ -21,3 +21,5 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           port: "2022"
           script: uname -a,whoami,pwd
+      - uses: ssh-to-rancher
+        name: ssh-to-rancher
