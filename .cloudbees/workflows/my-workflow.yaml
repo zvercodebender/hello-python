@@ -25,6 +25,6 @@ jobs:
             echo $HOME
             export HOME=/home/testusr
             cd $HOME
-            echo "${{var.hello_python_yaml}}" > hello-python.yaml
+            echo "${{ vars.hello_python_yaml }}" > hello-python.yaml
             ls -Fla
             kubectl get namespaces
