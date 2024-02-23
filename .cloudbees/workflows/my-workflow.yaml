@@ -23,3 +23,6 @@ jobs:
           script: uname -a,whoami,pwd
       - uses: ssh-to-rancher
         name: ssh-to-rancher
+        kind: deploy
+        with:
+          script: uname -a
