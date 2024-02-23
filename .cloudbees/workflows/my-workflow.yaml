@@ -22,5 +22,4 @@ jobs:
           port: "2022"
           script: |
             uname -a
-            whoami
-            pwd
+            kubectl get namespaces
