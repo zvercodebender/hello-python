@@ -27,4 +27,3 @@ jobs:
             cd $HOME
             pwd
             kubectl get namespaces
-            ls /cloudbees/workspace
