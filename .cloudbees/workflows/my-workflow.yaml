@@ -8,17 +8,20 @@ on:
 jobs:
   build:
     steps:
-      - uses: docker://golang:1.20.3-alpine3.17
-        name: Say hello
-        kind: build
-        shell: sh
-        run: |
-          echo "hello world"
-      - uses: cloudbees-io/kaniko@v1
-        name: build and publish container image
-        id: image-publish
+      - id: dockerconfig
+        name: Configure container registry credentials
+        uses: cloudbees-io/configure-oci-credentials@v1
         with:
+          registry: ${{ vars.DOCKER_REGISTRY }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build a container image with Kaniko
+        uses: cloudbees-io/kaniko@v1
+        with:
+          dockerfile: Dockerfile
+          context: .
           destination: rbroker/hello-py:20240123
+          build-args: BUILDKIT_CONTEXT_KEEP_GIT_DIR=1,BUILDKIT_INLINE_CACHE=1"
   deploy:
     environment: DEV
     steps:
