@@ -8,15 +8,20 @@ on:
 jobs:
   build:
     steps:
-      - id: dockerconfig
+      - uses: cloudbees-io/checkout@v1
+        name: Checkout
+        kind: build
+      - uses: cloudbees-io/configure-oci-credentials@v1
         name: Configure container registry credentials
-        uses: cloudbees-io/configure-oci-credentials@v1
+        kind: build
+        id: dockerconfig
         with:
           registry: ${{ vars.DOCKER_REGISTRY }}
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: Build a container image with Kaniko
-        uses: cloudbees-io/kaniko@v1
+      - uses: cloudbees-io/kaniko@v1
+        name: Build a container image with Kaniko
+        kind: build
         with:
           dockerfile: Dockerfile
           context: .
