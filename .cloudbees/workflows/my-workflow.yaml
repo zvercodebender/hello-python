@@ -27,24 +27,3 @@ jobs:
           context: .
           destination: rbroker/hello-py:20240123
           build-args: BUILDKIT_CONTEXT_KEEP_GIT_DIR=1,BUILDKIT_INLINE_CACHE=1"
-  deploy:
-    environment: DEV
-    steps:
-      - uses: cloudbees-io/ssh-deploy-actions@v1
-        name: SSH with username and password
-        kind: deploy
-        with:
-          host: rbroker.linkpc.net
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          port: "2022"
-          script: |
-            uname -a
-            echo $HOME
-            export HOME=/home/testusr
-            cd $HOME
-            echo "${{ vars.hello_python_yaml }}" > hello-python.yaml
-            ls -Fla
-            kubectl get namespaces
-    needs:
-      - build
