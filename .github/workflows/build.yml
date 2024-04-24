@@ -22,3 +22,4 @@ jobs:
           CB_PASSWD: "${{ secrets.CB_PASSWD }}"
           GET_LOCAL: "N"
         run: ./build.sh
+
