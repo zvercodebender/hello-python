@@ -2,8 +2,9 @@ name: Demo-Hello-Python
 on:
   push:
     branches:
-      - master
-      - cloudbees
+      - bob
+      # - master
+      # - cloudbees
 jobs:
   demo-hello-python-version:
     runs-on: ubuntu-latest
