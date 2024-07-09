@@ -100,7 +100,7 @@ def getemail():
         email = request.form['email']
         session['email'] = request.form['email']
         logger.info('email = ' + email)
-        #Rox.set_custom_string_property('email', email)
+        Rox.set_custom_string_property('email', email)
         return redirect(url_for('success'))
    else:
         return render_template('getemail.html')
