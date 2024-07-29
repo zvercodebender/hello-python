@@ -89,20 +89,21 @@ def success():
 
 @app.route("/")
 def hello():
+    session['email'] = ""
     Rox.fetch()
     logger.info('color is {}'.format(flags.titleColors.get_value()))
     return "<html><body>Hello Cloudbees with Github Action! <br><h1 style=\"color:" + flags.titleColors.get_value() + ";\">#GoTeam!</h1></body></html>"
 
 @app.route("/getemail",methods = ['POST', 'GET'])
 def getemail():
-   if request.method == 'POST':
+    if request.method == 'POST':
         logger.info('GetEMail POST')
         email = request.form['email']
         session['email'] = request.form['email']
         logger.info('email = ' + email)
         Rox.set_custom_string_property('email', email)
         return redirect(url_for('success'))
-   else:
+    else:
         return render_template('getemail.html')
     #   return redirect(url_for('success',email = 'rbroker@cloudbees.com'))
 
