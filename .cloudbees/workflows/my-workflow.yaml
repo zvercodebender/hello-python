@@ -37,3 +37,11 @@ jobs:
           context: .
           destination: rbroker/hello-py:${{steps.set-tag.outputs.version_tag}},rbroker/hello-py:latest
           build-args: BUILDKIT_CONTEXT_KEEP_GIT_DIR=1,BUILDKIT_INLINE_CACHE=1"
+
+      - uses: cloudbees-io/publish-evidence-item@v1
+        name: Third evidence step
+        with:
+          content: |-
+            # Table
+            | Container | rbroker/hello-py:${{steps.set-tag.outputs.version_tag}} |
+
